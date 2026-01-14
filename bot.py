@@ -58,8 +58,24 @@ def options_text():
 @dp.message(CommandStart())
 async def start(message: types.Message):
     await message.answer(
-        "Привет! 🎉\n"
-        "Нажми кнопку ниже — я брошу кубик и покажу твой выигрыш 👇",
+        "Привет! На связи Лена Skorn. \n"
+"У меня проходит беспроигрышная лотерея!) \n"
+\n
+"Вот такие подарки можно выиграть:\n"
+"• Сертификат на 3000 рублей\n"
+\n
+"• Сертификат на 1000 рублей\n"
+\n
+"• Сертификат на 500 рублей\n"
+\n
+"• Сертификат на 300 рублей\n"
+\n
+"• Сертификат на 200 рублей\n"
+\n
+"• Подарочек\n"
+\n
+\n
+"Нажми кнопку ниже — я брошу кубик и покажу твой выигрыш 👇",
         reply_markup=kb_roll_inline()
     )
 
@@ -75,7 +91,7 @@ async def roll(callback: types.CallbackQuery):
     await callback.answer()
 
     await bot.send_dice(chat_id=callback.message.chat.id, emoji="🎲")
-
+    await asyncio.sleep(2)
     await bot.send_message(
         chat_id=callback.message.chat.id,
         text=(
@@ -178,4 +194,5 @@ async def main():
     await dp.start_polling(bot)
 
 if __name__ == "__main__":
+
     asyncio.run(main())
